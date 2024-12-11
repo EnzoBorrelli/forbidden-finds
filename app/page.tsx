@@ -1,5 +1,5 @@
 
 
 export default function Home() {
-  return <main>hello</main>;
+  return <main className="w-full h-dvh">hello</main>;
 }
