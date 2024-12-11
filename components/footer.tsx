@@ -3,15 +3,18 @@ import HyperLink from "./ui/hyperLink";
 import Icon from "./ui/Icon";
 import Link from "next/link";
 import ScrollTopBtn from "./footer/scrollToTopBtn";
+import { hyperLinks, infoLinks } from "./footer/links";
 
 //TODO: add an alert disclaimer when a user enters
 
 export default function Footer() {
   return (
     <footer className="flex flex-col justify-center px-6 py-4 divide-y-2 ring-1 divide-stone-700 ring-stone-800 bg-stone-900">
-      <ScrollTopBtn/>
+      <ScrollTopBtn />
       <section className="flex flex-col items-center gap-2 pb-4">
-        <h2 className="text-lg sm:text-xl font-bold tracking-widest">DISCLAIMER</h2>
+        <h2 className="text-lg sm:text-xl font-bold tracking-widest">
+          DISCLAIMER
+        </h2>
         <p className="text-justify text-sm sm:text-base text-stone-200">
           This website is a fan-created project inspired by the{" "}
           <HyperLink
@@ -58,108 +61,48 @@ export default function Footer() {
           <h3 className="mb-1 font-semibold">More about the Horizon</h3>
           <ul className="flex flex-col gap-2">
             <h4 className="text-orange-300 underline">Guerrila games</h4>
-            <li className="flex gap-1 sm:ml-4 text-small sm:text-base">
-              <Icon folder="socials" img="instagram" size={20} />
-              <HyperLink
-                isTextLink={false}
-                href="https://www.instagram.com/guerrillagames/"
-                label="@guerrillagames"
-              />
-            </li>
-            <li className="flex gap-1 sm:ml-4 text-small sm:text-base">
-              <Icon folder="socials" img="youtube" size={20} />
-              <HyperLink
-                isTextLink={false}
-                href="https://www.youtube.com/guerrillagames"
-                label="Guerrilla"
-              />
-            </li>
-            <li className="flex gap-1 sm:ml-4 text-small sm:text-base">
-              <Icon folder="socials" img="twitter" size={20} />
-              <HyperLink
-                isTextLink={false}
-                href="https://x.com/guerrilla"
-                label="@Guerrilla"
-              />
-            </li>
+            {hyperLinks.slice(0, 3).map((link, index) => (
+              <li
+                key={index}
+                className="flex gap-1 sm:ml-4 text-small sm:text-base"
+              >
+                <Icon folder="socials" img={link.img} size={20} />
+                <HyperLink
+                  isTextLink={false}
+                  href={link.href}
+                  label={link.label}
+                />
+              </li>
+            ))}
             <h4 className="text-orange-300 underline">Playstation Studios</h4>
-            <li className="flex gap-1 sm:ml-4 text-small sm:text-base">
-              <Icon folder="socials" img="instagram" size={20} />
-              <HyperLink
-                isTextLink={false}
-                href="https://www.instagram.com/playstation/"
-                label="@playstation"
-              />
-            </li>
-            <li className="flex gap-1 sm:ml-4 text-small sm:text-base">
-              <Icon folder="socials" img="youtube" size={20} />
-              <HyperLink
-                isTextLink={false}
-                href="https://www.youtube.com/playstation/"
-                label="PlayStation"
-              />
-            </li>
-            <li className="flex gap-1 sm:ml-4 text-small sm:text-base">
-              <Icon folder="socials" img="twitter" size={20} />
-              <HyperLink
-                isTextLink={false}
-                href="https://x.com/PlayStation"
-                label="@PlayStation"
-              />
-            </li>
+            {hyperLinks.slice(3, 6).map((link, index) => (
+              <li
+                key={index}
+                className="flex gap-1 sm:ml-4 text-small sm:text-base"
+              >
+                <Icon folder="socials" img={link.img} size={20} />
+                <HyperLink
+                  isTextLink={false}
+                  href={link.href}
+                  label={link.label}
+                />
+              </li>
+            ))}
           </ul>
         </div>
         <div className="">
           <h3 className="mb-1 font-semibold">Information</h3>
           <ul className="flex flex-col gap-2 text-sm sm:text-base underline sm:no-underline">
-            <li>
-              <Link
-                href=""
-                className="transition-colors duration-100 hover:hover:text-amber-300"
-              >
-                About us
-              </Link>
-            </li>
-            <li>
-              <Link
-                href=""
-                className="transition-colors duration-100 hover:hover:text-amber-300"
-              >
-                About this project
-              </Link>
-            </li>
-            <li>
-              <Link
-                href=""
-                className="transition-colors duration-100 hover:hover:text-amber-300"
-              >
-                Privacy policy
-              </Link>
-            </li>
-            <li>
-              <Link
-                href=""
-                className="transition-colors duration-100 hover:hover:text-amber-300"
-              >
-                Terms & conditions
-              </Link>
-            </li>
-            <li>
-              <Link
-                href=""
-                className="transition-colors duration-100 hover:hover:text-amber-300"
-              >
-                Metal shards / currency
-              </Link>
-            </li>
-            <li>
-              <Link
-                href=""
-                className="transition-colors duration-100 hover:hover:text-amber-300"
-              >
-                Manage your account
-              </Link>
-            </li>
+            {infoLinks.map((link, index) => (
+              <li key={index}>
+                <Link
+                  href={link.href}
+                  className="transition-colors duration-100 hover:hover:text-amber-300"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
@@ -177,7 +120,7 @@ export default function Footer() {
             href="https://www.enzoborrelli.com.ar/"
             label="Endy Kaishi®"
           />{" "}
-          2024 | all rights reserved to{" "} 
+          2024 | all rights reserved to{" "}
           <HyperLink
             isTextLink={true}
             href="https://www.guerrilla-games.com/"
