@@ -1,7 +1,7 @@
 export const links = [
   {
     name: "Resources",
-    href: "",
+    href: "/resources",
     icon: {
       folder: "misc",
       img: "screws",
@@ -9,7 +9,7 @@ export const links = [
   },
   {
     name: "Tools",
-    href: "",
+    href: "/tools",
     icon: {
       folder: "misc",
       img: "trap ui",
@@ -17,7 +17,7 @@ export const links = [
   },
   {
     name: "Ammo",
-    href: "",
+    href: "/ammo",
     icon: {
       folder: "misc",
       img: "arrow",
@@ -25,7 +25,7 @@ export const links = [
   },
   {
     name: "Coils",
-    href: "",
+    href: "/coils",
     icon: {
       folder: "coils",
       img: "coil2",
@@ -33,7 +33,7 @@ export const links = [
   },
   {
     name: "Weapons",
-    href: "",
+    href: "/weapons",
     icon: {
       folder: "weapons",
       img: "hunter bow",
@@ -41,7 +41,7 @@ export const links = [
   },
   {
     name: "Outfits",
-    href: "",
+    href: "/outfits",
     icon: {
       folder: "outfits",
       img: "outfit1",
@@ -49,7 +49,7 @@ export const links = [
   },
   {
     name: "Special Gear",
-    href: "",
+    href: "/special-gear",
     icon: {
       folder: "special gear",
       img: "pullcaster",
@@ -57,7 +57,7 @@ export const links = [
   },
   {
     name: "Offers",
-    href: "",
+    href: "/offers",
     icon: {
       folder: "misc",
       img: "time",
@@ -65,7 +65,7 @@ export const links = [
   },
   {
     name: "Find It Yourself",
-    href: "",
+    href: "/find-it-yourself",
     icon: {
       folder: "misc",
       img: "backpack",
