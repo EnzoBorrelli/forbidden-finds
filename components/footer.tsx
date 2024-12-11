@@ -5,8 +5,6 @@ import Link from "next/link";
 import ScrollTopBtn from "./footer/scrollToTopBtn";
 import { hyperLinks, infoLinks } from "./footer/links";
 
-//TODO: add an alert disclaimer when a user enters
-
 export default function Footer() {
   return (
     <footer className="flex flex-col justify-center px-6 py-4 divide-y-2 ring-1 divide-stone-700 ring-stone-800 bg-stone-900">
