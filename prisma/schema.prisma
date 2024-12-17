@@ -1,0 +1,214 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String        @id @default(cuid())
+  username    String        @unique
+  avatar      Int
+  email       String        @unique
+  role        String
+  password    String
+  created_at  DateTime      @default(now())
+  updated_at  DateTime      @default(now())
+  cart        Cart?
+  Order       Order[]
+  Wallet      Wallet?
+  Transaction Transaction[]
+  Discount    Discount[]
+  Review      Review[]
+  WishList    WishList?
+}
+
+model Wallet {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  balance    Int      @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+enum TransactionType {
+  DEPOSIT
+  PAYMENT
+}
+
+model Transaction {
+  id               String          @id @default(cuid())
+  userId           String
+  amount           Int             @default(0)
+  transaction_type TransactionType
+  created_at       DateTime        @default(now())
+  user             User            @relation(fields: [userId], references: [id])
+}
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED
+}
+
+model Discount {
+  id              String       @id @default(cuid())
+  userId          String
+  code            String
+  discount_type   DiscountType
+  value           Int          @default(0)
+  min_order_value Int          @default(0)
+  expiration_date DateTime
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @default(now())
+  user            User         @relation(fields: [userId], references: [id])
+}
+
+model Product {
+  id          String       @id @default(cuid())
+  categoryId  String
+  rarityId    String
+  title       String
+  picture     String
+  summary     String
+  Description String
+  price       Int          @default(0)
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @default(now())
+  CartItems   Cart_item[]
+  OrderItems  Order_item[]
+  category    Category     @relation(fields: [categoryId], references: [id])
+  rarity      Rarity       @relation(fields: [rarityId], references: [id])
+  wishlists   WishList[]
+  tags        Tag[]
+  Review      Review[]
+  Offer       Offer?
+}
+
+model Review {
+  id                String   @id @default(cuid())
+  userId            String
+  productId         String
+  rating            Int      @default(0)
+  verified_purchase Boolean
+  comment           String
+  created_at        DateTime @default(now())
+  updated_at        DateTime @default(now())
+  user              User     @relation(fields: [userId], references: [id])
+  product           Product  @relation(fields: [productId], references: [id])
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @default(now())
+  Products    Product[]
+}
+
+enum Rarities {
+  UNCOMMON
+  RARE
+  VERY_RARE
+  LEGENDARY
+}
+
+model Rarity {
+  id       String    @id @default(cuid())
+  name     String
+  color    Rarities
+  Products Product[]
+}
+
+model Tag {
+  id       String    @id @default(cuid())
+  name     String
+  products Product[]
+}
+
+model WishList {
+  id         String    @id @default(cuid())
+  userId     String    @unique
+  created_at DateTime  @default(now())
+  user       User      @relation(fields: [userId], references: [id])
+  products   Product[]
+}
+
+enum OfferTypes {
+  PERCENTAGE
+  FIXED
+  BUY_X_GET_Y
+}
+
+model Offer {
+  id           String     @id @default(cuid())
+  productId    String     @unique
+  offer_type   OfferTypes
+  value        Int        @default(0)
+  min_quantity Int        @default(1)
+  is_active    Boolean
+  start_date   DateTime
+  end_date     DateTime
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @default(now())
+  product      Product    @relation(fields: [productId], references: [id])
+}
+
+model Cart {
+  id         String      @id @default(cuid())
+  userId     String      @unique
+  created_at DateTime    @default(now())
+  updated_at DateTime    @default(now())
+  user       User        @relation(fields: [userId], references: [id])
+  cartItems  Cart_item[]
+}
+
+model Cart_item {
+  id         String   @id @default(cuid())
+  cartId     String
+  productId  String
+  price      Int      @default(0)
+  quantity   Int      @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  cart       Cart     @relation(fields: [cartId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
+}
+
+enum OrderStatus {
+  PENDING
+  DELIVERED
+  CANCELLED
+}
+
+model Order {
+  id         String       @id @default(cuid())
+  userId     String
+  status     OrderStatus
+  total      Int          @default(0)
+  created_at DateTime     @default(now())
+  updated_at DateTime     @default(now())
+  user       User         @relation(fields: [userId], references: [id])
+  Order_item Order_item[]
+}
+
+model Order_item {
+  id         String   @id @default(cuid())
+  orderId    String
+  productId  String
+  price      Int      @default(0)
+  quantity   Int      @default(1)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  order      Order    @relation(fields: [orderId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
+}
