@@ -95,7 +95,7 @@ export default function Footer() {
               <li key={index}>
                 <Link
                   href={link.href}
-                  className="transition-colors duration-100 hover:hover:text-amber-300"
+                  className="transition-colors duration-100 hover:text-amber-300"
                 >
                   {link.name}
                 </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
       <section className="flex flex-col lg:flex-row items-center gap-4 lg:gap-0 justify-between px-4 pt-4">
         <a
           href="mailto:enzoborrelli_official@outlook.com"
-          className="transition-colors duration-100 hover:hover:text-amber-300"
+          className="transition-colors duration-100 hover:text-amber-300"
         >
           Contact with us
         </a>
