@@ -11,7 +11,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -62,7 +61,7 @@ const SignUpForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full p-4 text-stone-800 rounded-md md:w-1/3 dark:bg-bg-500 bg-bg-200"
+        className="w-full p-4 text-stone-900 rounded-md md:w-[400px]"
       >
         <div className="space-y-2">
           <FormField
@@ -70,7 +69,7 @@ const SignUpForm = () => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Username</FormLabel>
+                <FormLabel className="font-bold tracking-wider">Username</FormLabel>
                 <FormControl>
                   <Input placeholder="Username" {...field} />
                 </FormControl>
@@ -83,7 +82,7 @@ const SignUpForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Email</FormLabel>
+                <FormLabel className="font-bold tracking-wider">Email</FormLabel>
                 <FormControl>
                   <Input placeholder="aloy@guerrilla.com" {...field} />
                 </FormControl>
@@ -96,7 +95,7 @@ const SignUpForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Password</FormLabel>
+                <FormLabel className="font-bold tracking-wider">Password</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -113,7 +112,7 @@ const SignUpForm = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Confirm Password</FormLabel>
+                <FormLabel className="font-bold tracking-wider">Confirm Password</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Re-type the password"
@@ -127,19 +126,13 @@ const SignUpForm = () => {
           />
         </div>
         <Button
-          className="w-full mt-6 font-bold bg-amber-600 hover:bg-blue-600"
+          className="w-full mt-6 font-bold bg-amber-700 hover:bg-amber-500"
           type="submit"
           disabled={loading}
         >
           {loading ? "Signing Up User..." : "Sign Up"}
         </Button>
       </form>
-      <p className="mt-2 text-sm text-center text-text-400 dark:text-text-300">
-        If you already have an account, please&nbsp;
-        <Link className="text-blue-500 hover:underline" href="/sign-in">
-          Log In
-        </Link>
-      </p>
     </Form>
   );
 };

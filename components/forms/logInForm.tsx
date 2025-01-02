@@ -13,7 +13,6 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
@@ -54,14 +53,14 @@ const LogInForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full p-4 rounded-md md:w-1/3 bg-bg-200 dark:bg-bg-500">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full p-4 rounded-md text-stone-900 md:w-[400px]">
         <div className="space-y-2">
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Email</FormLabel>
+                <FormLabel className="font-bold tracking-wider">Email</FormLabel>
                 <FormControl>
                   <Input placeholder="aloy@guerilla.com" {...field} />
                 </FormControl>
@@ -74,7 +73,7 @@ const LogInForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-bold">Password</FormLabel>
+                <FormLabel className="font-bold tracking-wider">Password</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -87,16 +86,10 @@ const LogInForm = () => {
             )}
           />
         </div>
-        <Button className="w-full mt-6 font-bold bg-amber-600 hover:bg-blue-600" type="submit" disabled={loading}>
+        <Button className="w-full mt-6 font-bold bg-amber-700 hover:bg-amber-500" type="submit" disabled={loading}>
           {loading?"Loggin In User...":"Log In"}
         </Button>
       </form>
-      <p className="mt-2 text-sm text-center text-text-400 dark:text-text-300">
-        if you do not have an account, please&nbsp;
-        <Link className="text-blue-500 hover:underline" href="/sign-up">
-          Sign Up
-        </Link>
-      </p>
     </Form>
   );
 };
