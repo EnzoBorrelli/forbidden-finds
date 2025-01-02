@@ -41,8 +41,9 @@ export async function POST(req: Request) {
         password: hashedPassword,
       },
     });
-    // eslint-disable-next-line no-unused-vars
     const { password: newUserPassword, ...user } = newUser;
+    console.log(`Hashed password excluded: ${newUserPassword}`);
+
 
     return NextResponse.json(
       { user, message: "User created successfully" },
