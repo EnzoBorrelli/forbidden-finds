@@ -2,15 +2,10 @@
 import React, { useState } from "react";
 import { links } from "./user/links";
 import Link from "next/link";
-import { createClient } from "@/utils/supabase/client";
 
 export default function User({ isUser }: { isUser: boolean }) {
   const [menu, setMenu] = useState(true);
   const username = "Aloy";
-  const supabase = createClient();
-  async function SignOut() {
-    const { error } = await supabase.auth.signOut();
-  }
   return (
     <button
       onClick={() => setMenu(!menu)}
@@ -36,9 +31,9 @@ export default function User({ isUser }: { isUser: boolean }) {
         ))}
         <li className="hover:text-amber-300">
           {isUser ? (
-            <button onClick={SignOut}>Sign Out</button>
+            <button>Sign Out</button>
           ) : (
-            <Link href="/login">Sign In</Link>
+            <Link href="/log-in">Sign In</Link>
           )}
         </li>
       </ul>

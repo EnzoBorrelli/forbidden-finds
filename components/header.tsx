@@ -7,20 +7,8 @@ import SearchBar from "./header/searchBar";
 import HomeBtn from "./header/homeBtn";
 import NavBar from "./header/navBar";
 import DisclaimerAlert from "./header/disclaimerAlert";
-import { createClient } from "@/utils/supabase/server";
 
 export default async function Header() {
-  const supabase = await createClient();
-  let isUserActive: boolean;
-
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
-    isUserActive = false;
-    console.error(error);
-  } else {
-    isUserActive = true;
-    console.log(data);
-  }
 
   return (
     <header className="relative flex-col w-full px-6 py-4 bg-gradient-to-b divide-y-2 divide-stone-500 from-stone-900 from-80% to-transparent">
@@ -39,7 +27,7 @@ export default async function Header() {
             </li>
             <Division />
             <li>
-              <User isUser={isUserActive} />
+              <User isUser={false} />
             </li>
           </ul>
         </nav>
