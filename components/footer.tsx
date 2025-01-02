@@ -4,10 +4,11 @@ import Icon from "./ui/Icon";
 import Link from "next/link";
 import ScrollTopBtn from "./footer/scrollToTopBtn";
 import { hyperLinks, infoLinks } from "./footer/links";
+import { Separator } from "./ui/separator";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col justify-center px-6 py-4 divide-y-2 ring-1 divide-stone-700 ring-stone-800 bg-stone-900">
+    <footer className="flex flex-col justify-center px-6 py-4 ring-1 ring-stone-800 bg-stone-900">
       <ScrollTopBtn />
       <section className="flex flex-col items-center gap-2 pb-4">
         <h2 className="text-lg sm:text-xl font-bold tracking-widest">
@@ -38,6 +39,7 @@ export default function Footer() {
           merchandise or in-game items.
         </p>
       </section>
+      <Separator/>
       <section className="grid grid-cols-2 md:grid-cols-3 gap-2 py-4">
         <div className="col-span-2 md:col-span-1">
           <h3 className="mb-1 font-semibold">Forbidden finds</h3>
@@ -104,6 +106,7 @@ export default function Footer() {
           </ul>
         </div>
       </section>
+      <Separator/>
       <section className="flex flex-col lg:flex-row items-center gap-4 lg:gap-0 justify-between px-4 pt-4">
         <a
           href="mailto:enzoborrelli_official@outlook.com"
