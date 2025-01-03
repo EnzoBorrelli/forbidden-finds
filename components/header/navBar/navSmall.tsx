@@ -19,7 +19,7 @@ export default function NavSmall() {
       <ul
         className={`absolute flex-col ${
           menu ? "translate-x-0" : "-translate-x-60"
-        } transition-transform duration-200 ease-in justify-between p-2 font-semibold tracking-wide divide-y-2 divide-stone-700 bg-stone-800 ring-1 ring-stone-700 text-stone-400`}
+        } transition-transform duration-200 ease-in justify-between z-40 p-2 font-semibold tracking-wide divide-y-2 divide-stone-700 bg-stone-800 ring-1 ring-stone-700 text-stone-400`}
       >
         {links.map((link) => (
           <li key={link.name}>
