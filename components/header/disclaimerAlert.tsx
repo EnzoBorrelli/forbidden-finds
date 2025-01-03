@@ -7,7 +7,7 @@ export default function DisclaimerAlert() {
   const [alert, setAlert] = useState(true);
   return (
     <article
-      className={`fixed w-1/3 bg-stone-600 ring-2 ring-stone-500 top-40 left-1/3 ${
+      className={`fixed w-[90%] sm:w-1/2 lg:w-1/3 bg-stone-600 ring-2 ring-stone-500 z-50 top-40 left-4 sm:left-1/4 lg:left-1/3 ${
         alert ? "block" : "hidden"
       } py-2 px-4 rounded-md`}
     >
