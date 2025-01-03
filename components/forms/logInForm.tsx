@@ -48,6 +48,7 @@ const LogInForm = () => {
     } else {
       setLoading(false)
       router.push("/");
+      router.refresh();
     }
   };
 

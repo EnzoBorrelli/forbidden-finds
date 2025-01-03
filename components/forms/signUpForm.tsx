@@ -47,6 +47,7 @@ const SignUpForm = () => {
     if (response.ok) {
       setLoading(false);
       router.push("/");
+      router.refresh();
     } else {
       setLoading(false);
       toast({
