@@ -7,7 +7,7 @@ import Icon from "../ui/Icon";
 export default function LogInPC() {
   const [haveAccount, setHaveAccount] = useState(false);
   return (
-    <article className="relative flex justify-between px-6 rounded-md w-[70%] h-[75%] bg-stone-100">
+    <article className="relative hidden lg:flex justify-between px-6 rounded-md w-[90%] xl:w-[70%] h-[75%] bg-stone-100">
       <section className="flex flex-col justify-center items-center py-4">
         <h2 className="text-stone-900 text-2xl tracking-wider font-semibold">
           Create an account

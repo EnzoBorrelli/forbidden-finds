@@ -61,7 +61,7 @@ const SignUpForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full p-4 text-stone-900 rounded-md md:w-[400px]"
+        className="w-full p-4 pl-10 text-stone-900 rounded-md md:w-[400px]"
       >
         <div className="space-y-2">
           <FormField
