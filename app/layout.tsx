@@ -5,6 +5,7 @@ import "./globals.css";
 import { Exo } from "next/font/google";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Providers from "@/providers/providers";
 
 const exo = Exo({ subsets: ["latin"], weight: ["400", "700"] }); // Especifica los pesos que desees
 
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body
         className={`${exo.className} size-full bg-[url(/background.webp)] bg-cover bg-center text-stone-100 flex-col`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
