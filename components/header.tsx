@@ -20,7 +20,6 @@ export default async function Header() {
         where: { email: user?.email },
       })
     : null;
-  console.log(dbUser);
 
   return (
     <header className="relative flex-col w-full px-6 py-4 bg-gradient-to-b from-stone-900 from-80% to-transparent">
@@ -39,7 +38,7 @@ export default async function Header() {
             </li>
             <Division />
             <li>
-              <User user={dbUser} />
+              <User _user={dbUser} />
             </li>
           </ul>
         </nav>
