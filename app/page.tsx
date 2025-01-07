@@ -1,3 +1,5 @@
+
+
 export default function Home() {
-  return <main className="w-full h-dvh">home</main>;
+  return <main className="w-full h-dvh"></main>;
 }
