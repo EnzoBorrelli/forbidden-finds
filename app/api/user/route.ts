@@ -3,6 +3,8 @@ import { updatedUserSchema, userSchema } from "@/utils/zodSchemas/userSchemas";
 import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
 
+//TODO: add validation for email and username
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
